@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -86,18 +86,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\PCC\\kas kelas (2)\\kas kelas (2)\\Form1.cs",
-              "RelativeDocumentMoniker": "kas kelas (2)\\Form1.cs",
-              "ToolTip": "D:\\PCC\\kas kelas (2)\\kas kelas (2)\\Form1.cs",
-              "RelativeToolTip": "kas kelas (2)\\Form1.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAmwBgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T16:39:03.059Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UC Budget.cs [Design]",
               "DocumentMoniker": "D:\\PCC\\kas kelas (2)\\kas kelas (2)\\UC Budget.cs",
@@ -107,6 +95,18 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-25T08:02:01.727Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\PCC\\kas kelas (2)\\kas kelas (2)\\Form1.cs",
+              "RelativeDocumentMoniker": "kas kelas (2)\\Form1.cs",
+              "ToolTip": "D:\\PCC\\kas kelas (2)\\kas kelas (2)\\Form1.cs",
+              "RelativeToolTip": "kas kelas (2)\\Form1.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAmwBgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T16:39:03.059Z"
             }
           ]
         }
