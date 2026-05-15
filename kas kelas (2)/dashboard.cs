@@ -45,6 +45,30 @@ namespace kas_kelas__2_
             var UCBudgets = new UC_Budget();
             panelIsi.Controls.Add(UCBudgets);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panelIsi.Controls.Clear();
+            var UCStudentList = new UC_Student_List();
+            panelIsi.Controls.Add(UCStudentList);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 login = new Form1();
+            login.Show();
+            this.Hide();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelIsi_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

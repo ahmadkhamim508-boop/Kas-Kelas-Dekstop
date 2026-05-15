@@ -23,5 +23,45 @@ namespace kas_kelas__2_
             dasboard.Show();
             //this.Hide();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSiswa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNama_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPasword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

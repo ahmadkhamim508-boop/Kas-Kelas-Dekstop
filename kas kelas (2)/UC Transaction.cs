@@ -16,5 +16,10 @@ namespace kas_kelas__2_
         {
             InitializeComponent();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

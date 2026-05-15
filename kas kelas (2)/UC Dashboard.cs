@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace kas_kelas__2_
 {
@@ -75,6 +76,27 @@ namespace kas_kelas__2_
         private void btnMonths_Click(object sender, EventArgs e)
         {
             ShowMonthly();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void circularProgressBar1_Click(object sender, EventArgs e)
+        {
+            circularProgressBar1.Value = 45;
+            circularProgressBar1.Text = "45%";
+
+            circularProgressBar1.ProgressColor = Color.DeepSkyBlue;
+            circularProgressBar1.ForeColor = Color.White;
+
+            circularProgressBar1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+        }
+
+        private void progressBar2_Click(object sender, EventArgs e)
+        {
+            progressBar2.Style = ProgressBarStyle.Continuous;
         }
     }
 }
