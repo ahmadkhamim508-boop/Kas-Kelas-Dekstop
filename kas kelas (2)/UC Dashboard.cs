@@ -98,5 +98,7 @@ namespace kas_kelas__2_
         {
             progressBar2.Style = ProgressBarStyle.Continuous;
         }
+
+        
     }
 }

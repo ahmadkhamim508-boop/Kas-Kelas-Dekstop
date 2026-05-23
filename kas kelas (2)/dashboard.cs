@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace kas_kelas__2_
@@ -19,37 +12,51 @@ namespace kas_kelas__2_
 
         private void dashboard_Load(object sender, EventArgs e)
         {
-            //panelIsi.Controls.Clear();
-            //var UCdasboard = new UC_Dashboard ();
-            //panelIsi.Controls.Add(UCdasboard);
+            panelIsi.Controls.Clear();
+
+            var UCdasboard = new UC_Dashboard();
+            UCdasboard.Dock = DockStyle.Fill;
+
+            panelIsi.Controls.Add(UCdasboard);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             panelIsi.Controls.Clear();
+
             var UCdasboard = new UC_Dashboard();
+            UCdasboard.Dock = DockStyle.Fill;
+
             panelIsi.Controls.Add(UCdasboard);
         }
 
         private void btnTransaction_Click(object sender, EventArgs e)
         {
             panelIsi.Controls.Clear();
-            var UCTransaction = new UCTransaction();
-            panelIsi.Controls.Add(UCTransaction);
 
+            var UCTransaction = new UCTransaction();
+            UCTransaction.Dock = DockStyle.Fill;
+
+            panelIsi.Controls.Add(UCTransaction);
         }
 
         private void btnBudgets_Click(object sender, EventArgs e)
         {
             panelIsi.Controls.Clear();
+
             var UCBudgets = new UC_Budget();
+            UCBudgets.Dock = DockStyle.Fill;
+
             panelIsi.Controls.Add(UCBudgets);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             panelIsi.Controls.Clear();
+
             var UCStudentList = new UC_Student_List();
+            UCStudentList.Dock = DockStyle.Fill;
+
             panelIsi.Controls.Add(UCStudentList);
         }
 
@@ -57,6 +64,7 @@ namespace kas_kelas__2_
         {
             Form1 login = new Form1();
             login.Show();
+
             this.Hide();
         }
 
@@ -71,4 +79,3 @@ namespace kas_kelas__2_
         }
     }
 }
-

@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\database.cs" />
     <Compile Include="dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,8 +66,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\admin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LoginAdService.cs" />
     <Compile Include="UC Budget.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bgound.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
