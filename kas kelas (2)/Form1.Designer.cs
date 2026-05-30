@@ -34,15 +34,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panelCard = new System.Windows.Forms.Panel();
+            this.txtloginSiswa = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMasuk = new System.Windows.Forms.Button();
             this.checkBoxTampilkanpassword = new System.Windows.Forms.CheckBox();
             this.txtNama = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPasword = new System.Windows.Forms.TextBox();
-            this.btnAdmin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSiswa = new System.Windows.Forms.Button();
             panelMain = new System.Windows.Forms.Panel();
             panelMain.SuspendLayout();
             this.panelCard.SuspendLayout();
@@ -64,7 +63,6 @@
             panelMain.Name = "panelMain";
             panelMain.Size = new System.Drawing.Size(1182, 653);
             panelMain.TabIndex = 2;
-            panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // label6
             // 
@@ -110,70 +108,77 @@
             // 
             this.panelCard.AllowDrop = true;
             this.panelCard.BackColor = System.Drawing.Color.SkyBlue;
+            this.panelCard.Controls.Add(this.txtloginSiswa);
+            this.panelCard.Controls.Add(this.pictureBox1);
             this.panelCard.Controls.Add(this.btnMasuk);
             this.panelCard.Controls.Add(this.checkBoxTampilkanpassword);
             this.panelCard.Controls.Add(this.txtNama);
-            this.panelCard.Controls.Add(this.pictureBox1);
             this.panelCard.Controls.Add(this.label2);
             this.panelCard.Controls.Add(this.txtPasword);
-            this.panelCard.Controls.Add(this.btnAdmin);
             this.panelCard.Controls.Add(this.label1);
-            this.panelCard.Controls.Add(this.btnSiswa);
             this.panelCard.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.panelCard.Location = new System.Drawing.Point(177, 71);
             this.panelCard.Name = "panelCard";
             this.panelCard.Size = new System.Drawing.Size(450, 500);
             this.panelCard.TabIndex = 7;
             // 
+            // txtloginSiswa
+            // 
+            this.txtloginSiswa.AutoSize = true;
+            this.txtloginSiswa.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtloginSiswa.Location = new System.Drawing.Point(252, 464);
+            this.txtloginSiswa.Name = "txtloginSiswa";
+            this.txtloginSiswa.Size = new System.Drawing.Size(170, 23);
+            this.txtloginSiswa.TabIndex = 10;
+            this.txtloginSiswa.Text = "Login sebagai Siswa?";
+            this.txtloginSiswa.Click += new System.EventHandler(this.txtloginSiswa_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::kas_kelas__2_.Properties.Resources.Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(99, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(246, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnMasuk
             // 
             this.btnMasuk.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnMasuk.Location = new System.Drawing.Point(165, 447);
+            this.btnMasuk.Location = new System.Drawing.Point(180, 408);
             this.btnMasuk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMasuk.Name = "btnMasuk";
             this.btnMasuk.Size = new System.Drawing.Size(112, 45);
             this.btnMasuk.TabIndex = 8;
             this.btnMasuk.Text = "Masuk";
             this.btnMasuk.UseVisualStyleBackColor = false;
-            this.btnMasuk.Click += new System.EventHandler(this.button1_Click);
+            this.btnMasuk.Click += new System.EventHandler(this.btnMasuk_Click);
             // 
             // checkBoxTampilkanpassword
             // 
             this.checkBoxTampilkanpassword.AutoSize = true;
-            this.checkBoxTampilkanpassword.Location = new System.Drawing.Point(108, 415);
+            this.checkBoxTampilkanpassword.Location = new System.Drawing.Point(118, 376);
             this.checkBoxTampilkanpassword.Name = "checkBoxTampilkanpassword";
             this.checkBoxTampilkanpassword.Size = new System.Drawing.Size(202, 27);
             this.checkBoxTampilkanpassword.TabIndex = 7;
             this.checkBoxTampilkanpassword.Text = "Tampilkan password";
             this.checkBoxTampilkanpassword.UseVisualStyleBackColor = true;
+            this.checkBoxTampilkanpassword.CheckedChanged += new System.EventHandler(this.checkBoxTampilkanpassword_CheckedChanged);
             // 
             // txtNama
             // 
-            this.txtNama.Location = new System.Drawing.Point(108, 329);
+            this.txtNama.Location = new System.Drawing.Point(120, 290);
             this.txtNama.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(216, 30);
             this.txtNama.TabIndex = 2;
-            this.txtNama.TextChanged += new System.EventHandler(this.txtNama_TextChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::kas_kelas__2_.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(119, 77);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 183);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(106, 363);
+            this.label2.Location = new System.Drawing.Point(116, 324);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 23);
             this.label2.TabIndex = 6;
@@ -181,44 +186,22 @@
             // 
             // txtPasword
             // 
-            this.txtPasword.Location = new System.Drawing.Point(108, 388);
+            this.txtPasword.Location = new System.Drawing.Point(118, 349);
             this.txtPasword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPasword.Name = "txtPasword";
             this.txtPasword.Size = new System.Drawing.Size(216, 30);
             this.txtPasword.TabIndex = 3;
-            this.txtPasword.TextChanged += new System.EventHandler(this.txtPasword_TextChanged);
-            // 
-            // btnAdmin
-            // 
-            this.btnAdmin.Location = new System.Drawing.Point(220, 264);
-            this.btnAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(90, 38);
-            this.btnAdmin.TabIndex = 1;
-            this.btnAdmin.Text = "Admin";
-            this.btnAdmin.UseVisualStyleBackColor = true;
-            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            this.txtPasword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(104, 304);
+            this.label1.Location = new System.Drawing.Point(114, 265);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 23);
             this.label1.TabIndex = 5;
             this.label1.Text = "Username";
-            // 
-            // btnSiswa
-            // 
-            this.btnSiswa.Location = new System.Drawing.Point(128, 264);
-            this.btnSiswa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSiswa.Name = "btnSiswa";
-            this.btnSiswa.Size = new System.Drawing.Size(86, 38);
-            this.btnSiswa.TabIndex = 0;
-            this.btnSiswa.Text = "Siswa";
-            this.btnSiswa.UseVisualStyleBackColor = true;
-            this.btnSiswa.Click += new System.EventHandler(this.btnSiswa_Click);
             // 
             // Form1
             // 
@@ -243,10 +226,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnSiswa;
-        private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.TextBox txtPasword;
         private System.Windows.Forms.Label label1;
@@ -258,6 +237,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBoxTampilkanpassword;
         private System.Windows.Forms.Button btnMasuk;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label txtloginSiswa;
     }
 }
 

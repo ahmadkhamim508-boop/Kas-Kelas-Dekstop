@@ -1,4 +1,7 @@
 ﻿using kas_kelas__2_.Config;
+using kas_kelas__2_.Helpers;
+using kas_kelas__2_.Models;
+using kas_kelas__2_.Services;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -7,76 +10,58 @@ namespace kas_kelas__2_
 {
     public partial class Form1 : Form
     {
-        database conn = new database();
-
+        AuthController auth = new AuthController();
         public Form1()
         {
             InitializeComponent();
+            txtPasword.UseSystemPasswordChar = true;
+            this.AcceptButton = btnMasuk;
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMasuk_Click(object sender, EventArgs e)
         {
-            if (txtNama.Text.Trim() == "" || txtPasword.Text.Trim() == "")
+            string username = txtNama.Text.Trim();
+            string password = txtPasword.Text; // adjust as needed
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Username dan Password wajib di isi");
+                MessageBox.Show("Isi username dan password!");
                 return;
             }
+            var userModel = new UsersModel { username = username, password = password };
 
-            conn.Open();
-
-            string query = "SELECT * FROM admin WHERE username=@username AND password=@password";
-
-            SqlCommand cmd = new SqlCommand(query, conn.getConnection());
-
-            cmd.Parameters.AddWithValue("@username", txtNama.Text.Trim());
-            cmd.Parameters.AddWithValue("@password", txtPasword.Text.Trim());
-
-            SqlDataReader rd = cmd.ExecuteReader();
-
-            if (rd.HasRows)
+            if (auth.LoginAdmin(userModel))
             {
-                rd.Close();
+                // store admin session (you can extend UsersModel with role if needed)
+                SessionManager.SetAdmin(new UsersModel { username = username, password = null });
 
-                MessageBox.Show("Login Berhasil");
-                
+                this.Hide();
                 dashboard dashboard = new dashboard();
+                dashboard.FormClosed += (s, args) => this.Close();
                 dashboard.Show();
-
-                //this.Hide();
             }
             else
             {
-                rd.Close();
-
-                MessageBox.Show("Username atau Password Salah");
+                MessageBox.Show("Login anda Gagal!");
             }
-
-            conn.close();
         }
 
-        private void panelMain_Paint(object sender, PaintEventArgs e)
+        private void checkBoxTampilkanpassword_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkBoxTampilkanpassword.Checked)
+            {
+                txtPasword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPasword.UseSystemPasswordChar = true;
+            }
         }
 
-        private void btnSiswa_Click(object sender, EventArgs e)
+        private void txtloginSiswa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Login sebagai Siswa");
-        }
-
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Login sebagai Admin");
-        }
-
-        private void txtNama_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPasword_TextChanged(object sender, EventArgs e)
-        {
-
+            LoginStudent loginStudent = new LoginStudent();
+            loginStudent.Show();
+            this.Hide();
         }
     }
 }

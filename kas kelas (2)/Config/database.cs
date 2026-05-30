@@ -1,33 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace kas_kelas__2_.Config
 {
-    public class database
+    public class Database
     {
-        SqlConnection conn = new SqlConnection(
-            "Data Source=MSI\\SQLEXPRESS;" +
+        private string connectionString =
+            "Data Source=MSI\\SQLEXPRESS;" +    
             "Initial Catalog=dbkaskelas;" +
-            "Integrated Security=True"
-        );
+            "Integrated Security=True";
 
-        public void Open()
+        public SqlConnection GetConnection()
         {
-            conn.Open();
-        }
-
-        public void close()
-        {
-            conn.Close();
-        }
-
-        public SqlConnection getConnection()
-        {
-            return conn;
+            Debug.WriteLine("Database.GetConnection() -> " + connectionString);
+            return new SqlConnection(connectionString);
         }
     }
 }

@@ -2,103 +2,161 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using kas_kelas__2_.Config;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace kas_kelas__2_
 {
     public partial class UC_Dashboard : UserControl
     {
+        Database db = new Database();
         public UC_Dashboard()
         {
             InitializeComponent();
+            totalSaldo();
+            totalSiswa();
+            totalPending();
+            totalDebt();
+            recentTransaction();
+            recentExpenditure();
         }
-
         private void UC_Dashboard_Load(object sender, EventArgs e)
         {
-            chart1.Series.Clear();
-
-            var series = chart1.Series.Add("Kas");
-            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
-            series.Points.AddXY("Mon", 1000);
-            series.Points.AddXY("Tue", 2000);
-            series.Points.AddXY("Wed", 1500);
-            series.Points.AddXY("Thu", 2500);
-            series.Points.AddXY("Fri", 3000);
-            series.Points.AddXY("Sat", 2000);
+            recentTransaction();
+            recentExpenditure();
         }
 
-
-        private void LoadChart(List<string> labels, List<int> values)
+        private void totalSaldo()
         {
-            chart1.Series.Clear();
-
-            var series = chart1.Series.Add("Kas");
-            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
-            for (int i = 0; i < labels.Count; i++)
+            using (SqlConnection conn = db.GetConnection())
             {
-                series.Points.AddXY(labels[i], values[i]);
+                conn.Open();
+
+                string pemasukan = "SELECT ISNULL(SUM(jumlah_pemasukkan),0) FROM pembayaran_kas";
+                string pengeluaran = "SELECT ISNULL(SUM(jumlah_pengeluaran),0) FROM pengeluaran_kas";
+
+                SqlCommand cmdMasuk = new SqlCommand(pemasukan, conn);
+                SqlCommand cmdKeluar = new SqlCommand(pengeluaran, conn);
+
+                int totalMasuk = Convert.ToInt32(cmdMasuk.ExecuteScalar());
+                int totalKeluar = Convert.ToInt32(cmdKeluar.ExecuteScalar());
+
+                int saldo = totalMasuk - totalKeluar;
+
+                lblSaldo.Text = "Rp. " + saldo.ToString("N0");
             }
-
-            // styling biar clean
-            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
         }
 
-
-        private void ShowWeekly()
+        private void totalSiswa()
         {
-            var labels = new List<string> { "MON", "TUE", "WED", "THU", "FRI", "SAT" };
-            var values = new List<int> { 1000, 2000, 1500, 2500, 3000, 2000 };
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
 
-            LoadChart(labels, values);
+
+                string query = "SELECT COUNT(*) FROM data_students";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                int total = (int)cmd.ExecuteScalar();
+
+                lblSiswa.Text = total + " SISWA";
+            }
         }
 
-        private void ShowMonthly()
+        private void totalPending()
         {
-            var labels = new List<string> { "Week 1", "Week 2", "Week 3", "Week 4" };
-            var values = new List<int> { 5000, 7000, 6000, 8000 };
-
-            LoadChart(labels, values);
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM pembayaran_kas";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int total = (int)cmd.ExecuteScalar();
+                lblPending.Text = total + " RECORD";
+            }
         }
 
-        private void btnWeekly_Click(object sender, EventArgs e)
+        private void totalDebt()
         {
-            ShowWeekly();   
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT ISNULL(SUM(jumlah_pengeluaran),0) FROM pengeluaran_kas";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int total = Convert.ToInt32(cmd.ExecuteScalar());
+                lblDebt.Text = "Rp. " + total.ToString("N0");
+            }
         }
 
-        private void btnMonths_Click(object sender, EventArgs e)
+        private void recentTransaction()
         {
-            ShowMonthly();
-        }
 
-        private void chart1_Click(object sender, EventArgs e)
+            try
+            {
+                using (SqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    MessageBox.Show("Koneksi berhasil");
+
+                    string query = @"SELECT TOP 5
+                data_students.nama_siswa,
+                pembayaran_kas.jumlah_pemasukkan,
+                pembayaran_kas.tanggal_pemasukkan
+                FROM pembayaran_kas
+                JOIN data_students
+                ON pembayaran_kas.data_student_id = data_students.id
+                ORDER BY pembayaran_kas.id DESC";
+
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    MessageBox.Show("Jumlah data: " + dt.Rows.Count); // 🔥 INI KUNCI
+
+                    dgvRecent.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void recentExpenditure()
         {
+            try
+            {
+                using (SqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
 
+                    string query = @"SELECT TOP 5
+                    tanggal_pengeluaran,
+                    jumlah_pengeluaran,
+                    keterangan
+                    FROM pengeluaran_kas
+                    ORDER BY id DESC";
+
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgvbudget.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
-
-        private void circularProgressBar1_Click(object sender, EventArgs e)
-        {
-            circularProgressBar1.Value = 45;
-            circularProgressBar1.Text = "45%";
-
-            circularProgressBar1.ProgressColor = Color.DeepSkyBlue;
-            circularProgressBar1.ForeColor = Color.White;
-
-            circularProgressBar1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-        }
-
-        private void progressBar2_Click(object sender, EventArgs e)
-        {
-            progressBar2.Style = ProgressBarStyle.Continuous;
-        }
-
-        
     }
 }

@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnStudent = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -43,21 +42,24 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panelIsi = new System.Windows.Forms.Panel();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelIsi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnStudent);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.panel2);
@@ -74,20 +76,6 @@
             this.panel1.Size = new System.Drawing.Size(219, 676);
             this.panel1.TabIndex = 0;
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Lime;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Cascadia Code", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(30, 542);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 40);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "New Record";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::kas_kelas__2_.Properties.Resources.usd_circle;
@@ -99,20 +87,20 @@
             this.pictureBox5.TabIndex = 9;
             this.pictureBox5.TabStop = false;
             // 
-            // button1
+            // btnStudent
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(128)))), ((int)(((byte)(61)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Cascadia Code", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(58, 259);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 40);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "DAFTAR SISWA";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(128)))), ((int)(((byte)(61)))));
+            this.btnStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStudent.Font = new System.Drawing.Font("Cascadia Code", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStudent.ForeColor = System.Drawing.Color.White;
+            this.btnStudent.Location = new System.Drawing.Point(57, 252);
+            this.btnStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStudent.Name = "btnStudent";
+            this.btnStudent.Size = new System.Drawing.Size(140, 40);
+            this.btnStudent.TabIndex = 8;
+            this.btnStudent.Text = "DAFTAR SISWA";
+            this.btnStudent.UseVisualStyleBackColor = false;
+            this.btnStudent.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox3
             // 
@@ -124,7 +112,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // btnLogout
             // 
@@ -238,11 +225,33 @@
             // 
             // panelIsi
             // 
+            this.panelIsi.Controls.Add(this.pictureBox9);
+            this.panelIsi.Controls.Add(this.txtSearch);
             this.panelIsi.Location = new System.Drawing.Point(210, 3);
             this.panelIsi.Name = "panelIsi";
             this.panelIsi.Size = new System.Drawing.Size(970, 660);
             this.panelIsi.TabIndex = 1;
             this.panelIsi.Paint += new System.Windows.Forms.PaintEventHandler(this.panelIsi_Paint);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::kas_kelas__2_.Properties.Resources.search__1_;
+            this.pictureBox9.Location = new System.Drawing.Point(240, 18);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 41;
+            this.pictureBox9.TabStop = false;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(26, 18);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(200, 22);
+            this.txtSearch.TabIndex = 40;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dashboard
             // 
@@ -251,6 +260,7 @@
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Controls.Add(this.panelIsi);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "dashboard";
             this.Text = "Dashboard";
@@ -263,6 +273,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelIsi.ResumeLayout(false);
+            this.panelIsi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,9 +293,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelIsi;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStudent;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

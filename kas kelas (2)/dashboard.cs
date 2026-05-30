@@ -1,13 +1,41 @@
-﻿using System;
+﻿using kas_kelas__2_.Helpers;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace kas_kelas__2_
 {
     public partial class dashboard : Form
     {
+        string role = "";
+
         public dashboard()
         {
             InitializeComponent();
+            cekRole();
+        }
+
+        private void cekRole()
+        {
+            // JIKA SISWA
+            if (role == "siswa")
+            {
+                btnTransaction.Visible = false;
+                btnBudgets.Visible = false;
+                btnStudent.Visible = false;
+                pictureBox5.Visible = false;
+                pictureBox4.Visible = false;
+                pictureBox3.Visible = false;
+            }
+            
+            // JIKA ADMIN
+            else if (role == "admin")
+            {
+                btnTransaction.Visible = true;
+                btnBudgets.Visible = true;
+                btnStudent.Visible = true;
+            }
         }
 
         private void dashboard_Load(object sender, EventArgs e)
@@ -62,13 +90,13 @@ namespace kas_kelas__2_
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            SessionManager.Clear();
             Form1 login = new Form1();
             login.Show();
-
             this.Hide();
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }

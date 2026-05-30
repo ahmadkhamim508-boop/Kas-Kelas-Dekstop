@@ -34,19 +34,25 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtKeterangan = new System.Windows.Forms.TextBox();
+            this.txtJumlah = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dgvPengeluaran = new System.Windows.Forms.DataGridView();
+            this.btnTambah = new System.Windows.Forms.Button();
+            this.dtTanggal = new System.Windows.Forms.DateTimePicker();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnHapus = new System.Windows.Forms.Button();
+            this.pbUpload = new System.Windows.Forms.PictureBox();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPengeluaran)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUpload)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -101,26 +107,20 @@
             this.pictureBox5.TabIndex = 20;
             this.pictureBox5.TabStop = false;
             // 
-            // textBox2
+            // txtKeterangan
             // 
-            this.textBox2.Location = new System.Drawing.Point(28, 139);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(368, 22);
-            this.textBox2.TabIndex = 24;
+            this.txtKeterangan.Location = new System.Drawing.Point(28, 139);
+            this.txtKeterangan.Multiline = true;
+            this.txtKeterangan.Name = "txtKeterangan";
+            this.txtKeterangan.Size = new System.Drawing.Size(425, 67);
+            this.txtKeterangan.TabIndex = 24;
             // 
-            // textBox3
+            // txtJumlah
             // 
-            this.textBox3.Location = new System.Drawing.Point(253, 203);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(143, 22);
-            this.textBox3.TabIndex = 25;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(28, 203);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(141, 22);
-            this.textBox4.TabIndex = 26;
+            this.txtJumlah.Location = new System.Drawing.Point(28, 228);
+            this.txtJumlah.Name = "txtJumlah";
+            this.txtJumlah.Size = new System.Drawing.Size(141, 22);
+            this.txtJumlah.TabIndex = 26;
             // 
             // label1
             // 
@@ -134,17 +134,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(250, 184);
+            this.label3.Location = new System.Drawing.Point(250, 209);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 16);
             this.label3.TabIndex = 28;
             this.label3.Text = "Date";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 184);
+            this.label4.Location = new System.Drawing.Point(25, 209);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 16);
             this.label4.TabIndex = 29;
@@ -160,44 +159,124 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Riwayat Transaksi";
             // 
-            // dataGridView1
+            // dgvPengeluaran
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 387);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(787, 249);
-            this.dataGridView1.TabIndex = 32;
+            this.dgvPengeluaran.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPengeluaran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPengeluaran.Location = new System.Drawing.Point(25, 387);
+            this.dgvPengeluaran.Name = "dgvPengeluaran";
+            this.dgvPengeluaran.RowHeadersWidth = 51;
+            this.dgvPengeluaran.RowTemplate.Height = 24;
+            this.dgvPengeluaran.Size = new System.Drawing.Size(787, 249);
+            this.dgvPengeluaran.TabIndex = 32;
+            this.dgvPengeluaran.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPengeluaran_CellClick);
+            this.dgvPengeluaran.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPengeluaran_CellContentClick_1);
             // 
-            // button2
+            // btnTambah
             // 
-            this.button2.BackColor = System.Drawing.Color.Lime;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(29, 275);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 44);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Simpan Pengeluaran";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnTambah.BackColor = System.Drawing.Color.Lime;
+            this.btnTambah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTambah.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTambah.ForeColor = System.Drawing.Color.Black;
+            this.btnTambah.Location = new System.Drawing.Point(29, 275);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(182, 44);
+            this.btnTambah.TabIndex = 37;
+            this.btnTambah.Text = "Simpan Pengeluaran";
+            this.btnTambah.UseVisualStyleBackColor = false;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click_1);
+            // 
+            // dtTanggal
+            // 
+            this.dtTanggal.Location = new System.Drawing.Point(253, 226);
+            this.dtTanggal.Name = "dtTanggal";
+            this.dtTanggal.Size = new System.Drawing.Size(200, 22);
+            this.dtTanggal.TabIndex = 38;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.AutoEllipsis = true;
+            this.btnEdit.BackColor = System.Drawing.Color.Lime;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.Black;
+            this.btnEdit.Location = new System.Drawing.Point(582, 327);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(100, 44);
+            this.btnEdit.TabIndex = 39;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click_1);
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.AutoEllipsis = true;
+            this.btnHapus.BackColor = System.Drawing.Color.Red;
+            this.btnHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHapus.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHapus.ForeColor = System.Drawing.Color.Black;
+            this.btnHapus.Location = new System.Drawing.Point(712, 327);
+            this.btnHapus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(100, 44);
+            this.btnHapus.TabIndex = 40;
+            this.btnHapus.Text = "Delete";
+            this.btnHapus.UseVisualStyleBackColor = false;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click_1);
+            // 
+            // pbUpload
+            // 
+            this.pbUpload.Location = new System.Drawing.Point(490, 139);
+            this.pbUpload.Name = "pbUpload";
+            this.pbUpload.Size = new System.Drawing.Size(322, 166);
+            this.pbUpload.TabIndex = 41;
+            this.pbUpload.TabStop = false;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.AutoEllipsis = true;
+            this.btnUpload.BackColor = System.Drawing.Color.Lime;
+            this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpload.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.ForeColor = System.Drawing.Color.Black;
+            this.btnUpload.Location = new System.Drawing.Point(712, 76);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(100, 44);
+            this.btnUpload.TabIndex = 42;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click_1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(491, 116);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 16);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Upload Foto";
             // 
             // UC_Budget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnUpload);
+            this.Controls.Add(this.pbUpload);
+            this.Controls.Add(this.btnHapus);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.dtTanggal);
+            this.Controls.Add(this.btnTambah);
+            this.Controls.Add(this.dgvPengeluaran);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtJumlah);
+            this.Controls.Add(this.txtKeterangan);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.label2);
@@ -208,7 +287,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPengeluaran)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUpload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,14 +301,19 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtKeterangan;
+        private System.Windows.Forms.TextBox txtJumlah;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dgvPengeluaran;
+        private System.Windows.Forms.Button btnTambah;
+        private System.Windows.Forms.DateTimePicker dtTanggal;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnHapus;
+        private System.Windows.Forms.PictureBox pbUpload;
+        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.Label label6;
     }
 }
